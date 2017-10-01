@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p24FV16KM202 \
   -o \
-  dist/default/production/DemoTest.X.production.elf \
+  dist/default/debug/DemoTest.X.debug.elf \
   -L/opt/microchip/xc16/v1.32/bin/bin/.. \
   -L/opt/microchip/xc16/v1.32/bin/bin/../../lib \
   -L/opt/microchip/xc16/v1.32/bin/bin/../../support/PIC24E/gld \
@@ -15,8 +15,11 @@ Command:
   -L/opt/microchip/xc16/v1.32/bin/bin/../../support/dsPIC30F/gld \
   -L/opt/microchip/xc16/v1.32/bin/bin/../../support/dsPIC33E/gld \
   -L/opt/microchip/xc16/v1.32/bin/bin/../../support/dsPIC33F/gld \
-  build/default/production/main.o \
+  build/default/debug/main.o \
   --defsym=__MPLAB_BUILD=1 \
+  --defsym=__MPLAB_DEBUG=1 \
+  --defsym=__DEBUG=1 \
+  --defsym=__MPLAB_DEBUGGER_SIMULATOR=1 \
   -Tp24FV16KM202.gld.00 \
   --stack=16 \
   --check-sections \
@@ -29,10 +32,10 @@ Command:
   --stackguard=16 \
   --no-force-link \
   --smart-io \
-  -Map=dist/default/production/DemoTest.X.production.map \
+  -Map=dist/default/debug/DemoTest.X.debug.map \
   --report-mem \
   --memorysummary \
-  dist/default/production/memoryfile.xml \
+  dist/default/debug/memoryfile.xml \
   -start-group \
   --library=lega-pic30-elf \
   --library=m-elf \
@@ -126,8 +129,11 @@ FICD             0xf8000e           0x000002
 
 Linker script and memory map
 
-LOAD build/default/production/main.o
+LOAD build/default/debug/main.o
                     0x0001                  __MPLAB_BUILD = 0x1
+                    0x0001                  __MPLAB_DEBUG = 0x1
+                    0x0001                  __DEBUG = 0x1
+                    0x0001                  __MPLAB_DEBUGGER_SIMULATOR = 0x1
 LOAD pPIC24Fxxx
 LOAD /opt/microchip/xc16/v1.32/bin/bin/../../lib/libfx-elf.a
                     0xf80000                  __FBS = 0xf80000
@@ -203,24 +209,24 @@ __FICD
 
 .debug_info       0x000000        0x465
  *(.debug_info)
- .debug_info      0x000000        0x465 build/default/production/main.o
+ .debug_info      0x000000        0x465 build/default/debug/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xcb
  *(.debug_abbrev)
- .debug_abbrev    0x000000         0xcb build/default/production/main.o
+ .debug_abbrev    0x000000         0xcb build/default/debug/main.o
 
 .debug_line       0x000000         0x90
  *(.debug_line)
- .debug_line      0x000000         0x90 build/default/production/main.o
+ .debug_line      0x000000         0x90 build/default/debug/main.o
 
 .debug_frame      0x000000         0x30
  *(.debug_frame)
- .debug_frame     0x000000         0x30 build/default/production/main.o
+ .debug_frame     0x000000         0x30 build/default/debug/main.o
 
 .debug_str        0x000000         0x1f
  *(.debug_str)
- .debug_str       0x000000         0x1f build/default/production/main.o
+ .debug_str       0x000000         0x1f build/default/debug/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -232,7 +238,7 @@ __FICD
                   0x000000         0x1b
  *(.debug_pubnames)
  .debug_pubnames
-                  0x000000         0x1b build/default/production/main.o
+                  0x000000         0x1b build/default/debug/main.o
 
 .debug_ranges
  *(.debug_ranges)
@@ -240,7 +246,7 @@ __FICD
 .debug_aranges    0x000000         0x18
  *(.debug_aranges)
  .debug_aranges
-                  0x000000         0x18 build/default/production/main.o
+                  0x000000         0x18 build/default/debug/main.o
                     0x0000                  WREG0 = 0x0
                     0x0000                  _WREG0 = 0x0
                     0x0002                  WREG1 = 0x2
@@ -1000,23 +1006,23 @@ LOAD /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a
 LOAD /opt/microchip/xc16/v1.32/bin/bin/../../lib/libm-elf.a
 LOAD /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-c-elf.a
 END GROUP
-OUTPUT(dist/default/production/DemoTest.X.production.elf elf32-pic30)
+OUTPUT(dist/default/debug/DemoTest.X.debug.elf elf32-pic30)
 LOAD default_isr
 
 .debug_pubtypes
                   0x000018         0x71
  .debug_pubtypes
-                  0x000018         0x71 build/default/production/main.o
+                  0x000018         0x71 build/default/debug/main.o
 
 __c30_signature
                   0x000089         0x12
  __c30_signature
-                  0x000089          0x6 build/default/production/main.o
+                  0x000089          0x6 build/default/debug/main.o
  __c30_signature
                   0x00008f          0x6 /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
                   0x000095          0x6 /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
 
 .text             0x0002ce         0x4c
- .text            0x0002ce         0x4c build/default/production/main.o
+ .text            0x0002ce         0x4c build/default/debug/main.o
                   0x0002ce                  _main
