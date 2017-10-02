@@ -1,10 +1,15 @@
 #include <xc.h>
 
+
 int main(void)
 {
     unsigned int i;
     
     // Set up DAC1CON
+    // Port setup for DACs
+    TRISBbits.TRISB12 = 0; // DAC1 Output, Analog output, Pin 23
+    ANSBbits.ANSB12 = 1;
+    
     DAC1CONbits.DACREF = 2;
     DAC1CONbits.DACFM = 0;
     DAC1CONbits.DACTRIG = 0;

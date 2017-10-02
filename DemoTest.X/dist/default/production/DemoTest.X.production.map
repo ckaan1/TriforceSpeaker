@@ -58,9 +58,9 @@ Program Memory  [Origin = 0x200, Length = 0x2a00]
 section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200                0xce           0x135  (309)
-.text                        0x2ce                0x4c            0x72  (114)
+.text                        0x2ce                0x50            0x78  (120)
 
-                 Total program memory used (bytes):          0x1a7  (423) 2%
+                 Total program memory used (bytes):          0x1ad  (429) 2%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0xfc]
@@ -201,26 +201,26 @@ __FICD
 .comment
  *(.comment)
 
-.debug_info       0x000000        0x465
+.debug_info       0x000000        0x769
  *(.debug_info)
- .debug_info      0x000000        0x465 build/default/production/main.o
+ .debug_info      0x000000        0x769 build/default/production/main.o
  *(.gnu.linkonce.wi.*)
 
 .debug_abbrev     0x000000         0xcb
  *(.debug_abbrev)
  .debug_abbrev    0x000000         0xcb build/default/production/main.o
 
-.debug_line       0x000000         0x90
+.debug_line       0x000000         0x92
  *(.debug_line)
- .debug_line      0x000000         0x90 build/default/production/main.o
+ .debug_line      0x000000         0x92 build/default/production/main.o
 
 .debug_frame      0x000000         0x30
  *(.debug_frame)
  .debug_frame     0x000000         0x30 build/default/production/main.o
 
-.debug_str        0x000000         0x1f
+.debug_str        0x000000         0x32
  *(.debug_str)
- .debug_str       0x000000         0x1f build/default/production/main.o
+ .debug_str       0x000000         0x32 build/default/production/main.o
 
 .debug_loc
  *(.debug_loc)
@@ -1004,19 +1004,19 @@ OUTPUT(dist/default/production/DemoTest.X.production.elf elf32-pic30)
 LOAD default_isr
 
 .debug_pubtypes
-                  0x000018         0x71
+                  0x000018         0xad
  .debug_pubtypes
-                  0x000018         0x71 build/default/production/main.o
+                  0x000018         0xad build/default/production/main.o
 
 __c30_signature
-                  0x000089         0x12
+                  0x0000c5         0x12
  __c30_signature
-                  0x000089          0x6 build/default/production/main.o
+                  0x0000c5          0x6 build/default/production/main.o
  __c30_signature
-                  0x00008f          0x6 /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
+                  0x0000cb          0x6 /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a(crt0_standard.o)
  __c30_signature
-                  0x000095          0x6 /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
+                  0x0000d1          0x6 /opt/microchip/xc16/v1.32/bin/bin/../../lib/liblega-pic30-elf.a(data_init_standard.o)
 
-.text             0x0002ce         0x4c
- .text            0x0002ce         0x4c build/default/production/main.o
+.text             0x0002ce         0x50
+ .text            0x0002ce         0x50 build/default/production/main.o
                   0x0002ce                  _main
